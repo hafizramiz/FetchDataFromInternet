@@ -1,0 +1,51 @@
+package com.example.fetchdatafrominternet.ui
+
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
+class AppViewModel : ViewModel() {
+    // Ui State'i burda basitce tutcam.Tipini belirttim String olacak.
+    var appUiState: String by mutableStateOf("")
+        // Bunu ayrica private set yaptim ki disardan erisip de degistirilmesin
+        private set
+
+    init {
+        // init blogu icinde metotu cagircam ki state ilk olarak belirttigim state ile acilsin.
+        getDataFromInternet()
+        // Burda viewModelScope bir built in Functiondir. Biz burda suspend fonksiyonlari
+        // cagirabiliriz. ViewModel temizlendiginde burda baslatilmis herhangi bir coroutine
+//        de iptal edilir.
+        viewModelScope.launch {
+            // Tek bir launch icinde yaparsam birincinin bitmesini bekliyor. Ayri launch icinde yazarsam
+            // Fire and Forget mantigiyla calisiyor.
+            denemeFunc()
+            denemeFunc1()
+        }
+
+    }
+
+    fun getDataFromInternet() {
+        appUiState = "Burada Veriyi gosterecegim"
+    }
+
+    suspend fun denemeFunc() {
+        println(" denemeFunc basladi")
+
+        delay(3000)
+        println("Deneme fonk  bitti")
+
+    }
+
+    suspend fun denemeFunc1() {
+        println(" denemeFunc1 basladi")
+        delay(3000)
+        println("Deneme fonk1 bitti")
+
+    }
+
+}
