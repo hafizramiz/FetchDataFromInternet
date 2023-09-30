@@ -35,9 +35,13 @@ fun MyApp() {
             )
         }
     ) {
-        Surface(modifier = Modifier.fillMaxSize().padding(it)) {
+        Surface(modifier = Modifier
+            .fillMaxSize()
+            .padding(it)) {
             println(it)
-            val appViewModel: AppViewModel = viewModel()
+            val appViewModel: AppViewModel = viewModel(factory = AppViewModel.Factory)
+            //appViewModel::getDataFromInternet
+
             HomeScreen(appUiState = appViewModel.appUiState);
         }
 
