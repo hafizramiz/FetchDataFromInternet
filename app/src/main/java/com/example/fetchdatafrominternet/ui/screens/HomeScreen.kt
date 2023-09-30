@@ -1,4 +1,4 @@
-package com.example.fetchdatafrominternet.ui
+package com.example.fetchdatafrominternet.ui.screens
 
 import androidx.compose.runtime.Composable
 import kotlinx.coroutines.delay
@@ -12,9 +12,9 @@ when (appUiState){
        return HomeComponent(modelListesi = appUiState.modelListesi)
     }
 
-    is AppUiState.Loading->
+    is AppUiState.Loading ->
         LoadingScreen()
-    is AppUiState.Error->
+    is AppUiState.Error ->
         ErrorScreen()
 }
 

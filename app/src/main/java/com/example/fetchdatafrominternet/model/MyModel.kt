@@ -1,4 +1,4 @@
-package com.example.fetchdatafrominternet.network
+package com.example.fetchdatafrominternet.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
